@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { Toaster } from "@/components/ui/toaster"
 
 interface Props {
-    children: ReactNode
+    children: any
 }
 const Layout: FC<Props> = ({ children }) => {
     return (

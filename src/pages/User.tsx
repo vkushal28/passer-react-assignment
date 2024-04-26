@@ -22,12 +22,17 @@ const User = () => {
         });
         if (!data) navigate("/");
         return data;
-    }, [id, UserState.users]);
+    }, [id, UserState.users]) || {
+        id: "",
+        username: "",
+        role: "",
+        email: ""
+    };
     useEffect(() => {
         if (id && !getData) navigate("/");
     }, [getData, id])
     const handleDelete = () => {
-        dispatch(removeUser(getData.id));
+        dispatch(removeUser(getData?.id));
         toast({
             description: "User deleted.",
             duration: 1500
@@ -40,7 +45,7 @@ const User = () => {
             <div className="bg-blue-900">
                 <div className="flex flex-col items-center justify-evenly h-[10rem]">
                     <div className="max-w-sm md:max-w-lg  text-left text-balance text-base md:text-xl lg:text-3xl font-semibold tracking-[-0.015em] text-white">
-                        {getData?.id}. {getData?.username}<Badge className="ml-4 px-2 py-1 text-xs">{getData?.role ? 'Admin' : 'User'}</Badge>
+                        {getData?.id || ""}. {getData?.username}<Badge className="ml-4 px-2 py-1 text-xs">{getData?.role ? 'Admin' : 'User'}</Badge>
                         <p className="text-white text-xs sm:text-base">
                             {getData?.email}
                         </p>

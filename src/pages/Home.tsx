@@ -40,10 +40,8 @@ const Home = () => {
                 </TableHeader>
                 <TableBody>
                     {
-                        currentUsers.map((user, index) => (
+                        currentUsers.map((user: { id: string, username: string, role: boolean, email: string }, index: number) => (
                             <TableRow key={index} onClick={() => {
-                                console.log("clicked on user: ", user);
-                                console.log("navigating to:", `/user/${user.id}`)
                                 navigate(`/user/${user.id}`);
                             }}>
                                 <TableCell>#{((10 * (UserState.currentPage - 1)) + index) + 1}</TableCell>
